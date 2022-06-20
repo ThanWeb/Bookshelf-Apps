@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Bookshelf Apps</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Bookshelf-Apps</h1>
+        </header>
+        <main>
+            <!-- FORM INPUT BUKU -->
+            <section class="input_section">
+                <h2>Masukkan Buku Baru</h2>
+                <form id="inputBook">
+                    <div class="input">
+                        <label for="inputBookTitle">Judul</label>
+                        <input id="inputBookTitle" type="text" required>
+                    </div>
+                    <div class="input">
+                        <label for="inputBookAuthor">Penulis</label>
+                        <input id="inputBookAuthor" type="text" required>
+                    </div>
+                    <div class="input">
+                        <label for="inputBookYear">Tahun</label>
+                        <input id="inputBookYear" type="number" required>
+                    </div>
+                    <div class="input_inline">
+                        <label for="inputBookIsComplete">Selesai dibaca</label>
+                        <input id="inputBookIsComplete" type="checkbox">
+                    </div>
+                    <button id="bookSubmit" type="submit">Masukkan Buku</span></button>
+                    <!-- <p class="test">test</p> -->
+                </form>
+            </section>
+            <!-- FORM CARI BUKU -->
+            <section class="search_section">
+                <h2>Cari Buku (Opsional)</h2>
+                    <form id="searchBook">
+                    <label for="searchBookTitle">Judul</label>
+                    <input id="searchBookTitle" type="text">
+                    <button id="searchSubmit" type="submit">Cari</button>
+                </form>
+            </section>
+            <!-- BELUM SELESAI DIBACA -->
+            <section class="book_shelf">
+                <h2>Belum selesai dibaca</h2>
+                <div id="incompleteBookshelfList" class="book_list">
+                </div>
+            </section>
+            <!-- SELESAI DIBACA -->
+            <section class="book_shelf">
+                <h2>Selesai dibaca</h2>
+                <div id="completeBookshelfList" class="book_list">
+                </div>
+            </section>
+            <section class="modal-form">
+                <form action="">
+                    <div class="edit-field">
+                        <label for="editBookTitle">Judul</label>
+                        <input id="editBookTitle" type="text" required>
+                    </div>
+                    <div class="edit-field">
+                        <label for="editBookAuthor">Penulis</label>
+                        <input id="editBookAuthor" type="text" required>
+                    </div>
+                    <div class="edit-field">
+                        <label for="editBookYear">Tahun</label>
+                        <input id="editBookYear" type="number" required>
+                    </div>
+                    <div class="edit-field">
+                        <label for="editBookIsComplete">Selesai dibaca</label>
+                        <input id="editBookIsComplete" type="checkbox">
+                    </div>
+                    <button id="bookEditSubmit" type="submit">Edit Buku</span></button>
+                    <span class="exit-modal" onclick="exitForm()">X</span>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p></p>
+        </footer>
+    <script src="main.js"></script>
+    </body>
+</html>
