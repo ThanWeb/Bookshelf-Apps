@@ -1,11 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+body {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+body, button, input {
+    font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+    margin: 1em 0;
+}
+
 .id {
     display: none;
+}
+
+/* HEADER */
+
+header h1 {
+    padding: .5em 0;
+    font-size: 3em;
+}
+
+/* NAVIGATION */
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+nav li {
+    flex-basis: 20%;
+    text-decoration: none;
+    margin: 0.3em 1em;
+    cursor: pointer;
+}
+
+.active {
+    font-size: 1.5em;
+}
+
+/* INPUT FORM */
+
+#inputBook {       
+    
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    margin: .5em 0;
+}
+
+.input label, .input .text-input, .input div {
+    text-align: left;
+    flex-basis: 20%;
+}
+
+.input input {
+    padding-left: 3px;
+}
+
+/* FORM CARI BUKU */
+
+.search_section p, .search_section form{
+    margin: 0.5em 0;
+}
+
+/* LEMARI BUKU */
+
+.cabinet {
+
+}
+
+.book_list {
+    display: flex;
+    justify-content: left;
+   
+    flex-wrap: wrap;
+    font-size: 0.8em; 
+}
+
+.each-book {
+    margin: 1em 0;
+    width: 20%;
+    box-shadow: inset 5px rgba(0, 0, 0, 0.75);
 }
 
 /* MODAL FORM */

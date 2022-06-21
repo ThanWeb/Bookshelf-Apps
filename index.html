@@ -10,6 +10,13 @@
     <body>
         <header>
             <h1>Bookshelf-Apps</h1>
+            <nav>
+                <ul>
+                    <li class="nav">Tambah Buku</li>
+                    <li class="nav active">Rak Buku</li>
+                    <li class="nav">Cari Buku</li>
+                </ul>
+            </nav>
         </header>
         <main>
             <!-- FORM INPUT BUKU -->
@@ -18,45 +25,50 @@
                 <form id="inputBook">
                     <div class="input">
                         <label for="inputBookTitle">Judul</label>
-                        <input id="inputBookTitle" type="text" required>
+                        <input id="inputBookTitle" class="text-input" type="text" required>
                     </div>
                     <div class="input">
                         <label for="inputBookAuthor">Penulis</label>
-                        <input id="inputBookAuthor" type="text" required>
+                        <input id="inputBookAuthor" class="text-input" type="text" required>
                     </div>
                     <div class="input">
                         <label for="inputBookYear">Tahun</label>
-                        <input id="inputBookYear" type="number" required>
+                        <input id="inputBookYear" class="text-input" type="number" required>
                     </div>
-                    <div class="input_inline">
+                    <div class="input">
                         <label for="inputBookIsComplete">Selesai dibaca</label>
-                        <input id="inputBookIsComplete" type="checkbox">
+                        <div>
+                            <input id="inputBookIsComplete" type="checkbox">
+                        </div>
                     </div>
                     <button id="bookSubmit" type="submit">Masukkan Buku</span></button>
-                    <!-- <p class="test">test</p> -->
                 </form>
             </section>
             <!-- FORM CARI BUKU -->
             <section class="search_section">
-                <h2>Cari Buku (Opsional)</h2>
-                    <form id="searchBook">
-                    <label for="searchBookTitle">Judul</label>
-                    <input id="searchBookTitle" type="text">
-                    <button id="searchSubmit" type="submit">Cari</button>
-                </form>
-            </section>
-            <!-- BELUM SELESAI DIBACA -->
-            <section class="book_shelf">
-                <h2>Belum selesai dibaca</h2>
-                <div id="incompleteBookshelfList" class="book_list">
+                <h2>Cari Buku</h2>
+                <p>Ketikkan Judul Buku atau Nama Penulis</p>
+                <div id="searchBook">
+                    <label for="searchBookText"></label>
+                    <input id="searchBookText" type="text">
                 </div>
             </section>
-            <!-- SELESAI DIBACA -->
-            <section class="book_shelf">
-                <h2>Selesai dibaca</h2>
-                <div id="completeBookshelfList" class="book_list">
-                </div>
+            <!-- LEMARI BUKU -->
+            <section class="cabinet">
+                <!-- BELUM SELESAI DIBACA -->
+                <section class="book_shelf">
+                    <h2>Belum selesai dibaca</h2>
+                    <div id="incompleteBookshelfList" class="book_list">
+                    </div>
+                </section>
+                <!-- SELESAI DIBACA -->
+                <section class="book_shelf">
+                    <h2>Selesai dibaca</h2>
+                    <div id="completeBookshelfList" class="book_list">
+                    </div>
+                </section>
             </section>
+            <!-- FORM EDIT BUKU -->
             <section class="modal-form">
                 <form action="">
                     <div class="edit-field">

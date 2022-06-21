@@ -1,11 +1,11 @@
+// INITIATION
+
 window.addEventListener("load", function(){
-    printListBook();
-    initiationButtons();
+    printListBook(1);
 });
 
 const localStorageKey = "BOOKS_DATA";
 const bookInputForm = document.getElementById("inputBook");
-// const test = document.querySelector(".test");
 
 bookInputForm.addEventListener("submit", function(){
     const inputTime = new Date().valueOf();
@@ -29,7 +29,6 @@ bookInputForm.addEventListener("submit", function(){
 });
 
 function initiationButtons(){
-    let data = getBooks();
     const editButtons = document.querySelectorAll(".edit");
     const deleteButtons = document.querySelectorAll(".delete");
     const allId = document.querySelectorAll(".id");
@@ -43,6 +42,8 @@ function initiationButtons(){
     }
 }
 
+// CHECK STORAGE
+
 function checkForStorage() {
     if (typeof (Storage) === undefined) {
         alert('Browser kamu tidak mendukung local storage');
@@ -51,6 +52,8 @@ function checkForStorage() {
     else
         return true;
 }
+
+// INSERT
 
 function insertBook(bookData){
     if(checkForStorage()){
@@ -68,11 +71,16 @@ function insertBook(bookData){
     }
 }
 
-function printListBook(){
+// PRINT
+
+function printListBook(x){
     const incompleteListBookDiv = document.getElementById("incompleteBookshelfList");
     const completeListBookDiv = document.getElementById("completeBookshelfList");
-    let printedDiv, printedButtonDiv, printedBookDiv;
-    let allBooks;
+    const searchBookText = document.getElementById("searchBookText").value.toLowerCase();
+    const eachBook = document.querySelectorAll(".each-book");
+    for(let i = 0; i < eachBook.length; i++)
+        eachBook[i].remove();
+    let printedDiv, printedButtonDiv, printedBookDiv, allBooks, name, author;
     let row = [];
     let printedRow = [];
     let printedButton = [];
@@ -81,9 +89,15 @@ function printListBook(){
         if(localStorage.getItem(localStorageKey) !== null){
             allBooks = getBooks();
             for(let i = 0; i < allBooks.length; i++){
-                row[0] = allBooks[i].name;
-                row[1] = allBooks[i].author;
-                row[2] = allBooks[i].year;
+                name = allBooks[i].name;
+                author = allBooks[i].author;
+                if(x == 2){
+                    if(!(name.toLowerCase().indexOf(searchBookText) > -1))
+                        continue;
+                }
+                row[0] = `${allBooks[i].name}`;
+                row[1] = `Ditulis Oleh ${allBooks[i].author}`;
+                row[2] = `Terbit Pada Tahun ${allBooks[i].year}`;
                 row[3] = allBooks[i].id;
                 printedDiv = document.createElement("div");
                 printedButtonDiv = document.createElement("div");
@@ -116,7 +130,10 @@ function printListBook(){
             }
         }
     }
+    initiationButtons();
 }
+
+// GET BOOKS
 
 function getBooks(){
     let bookData = [];
@@ -124,6 +141,8 @@ function getBooks(){
     bookData = JSON.parse(bookData);
     return bookData;
 }
+
+// EDIT
 
 function editBook(id){
     let data = getBooks();
@@ -142,18 +161,18 @@ function editBook(id){
     editYear.value = data[index].year;
     if(data[index].isComplete == true)
         editComplete.checked = true;
+    else
+        editComplete.checked = false;
     editForm.style.display = "flex";
     editForm.addEventListener("submit", function(){
-        if(confirm("Lanjutkan Penyuntingan")){
-            data[index].name = editTitle.value;
-            data[index].author = editAuthor.value;
-            data[index].year = editYear.value;
-            if(editComplete.checked)
-                data[index].isComplete = true;
-            else
-                data[index].isComplete = false;
-            localStorage.setItem(localStorageKey, JSON.stringify(data));
-        }
+        data[index].name = editTitle.value;
+        data[index].author = editAuthor.value;
+        data[index].year = editYear.value;
+        if(editComplete.checked)
+            data[index].isComplete = true;
+        else
+            data[index].isComplete = false;
+        localStorage.setItem(localStorageKey, JSON.stringify(data));
     });
 }
 
@@ -161,6 +180,8 @@ function exitForm(){
     const editForm = document.querySelector(".modal-form");
     editForm.style.display = "none";
 }
+
+// DELETE
 
 function deleteBook(id){
     if(confirm("Lanjutkan Penghapusan")){
@@ -174,3 +195,39 @@ function deleteBook(id){
         location.reload();
     }
 }
+
+// CHANGE POSITION
+
+let temp, indexTemp;
+const navigations = document.querySelectorAll(".nav");
+for(let i = 0; i < navigations.length; i++){
+    navigations[i].addEventListener("click", function(){
+        changePosition(navigations[i].innerHTML, i);
+    });
+}
+
+function changePosition(text, index){
+    let navText = [];
+    if(index != 1){
+        for(let i = 0; i < navigations.length; i++)
+            navText.push(navigations[i].innerHTML);
+
+        for(let i = 0; i < navigations.length; i++){
+            if(navText[i] == text)
+                indexTemp = i;
+        }
+
+        temp = navText[1];
+        navText[1] = navText[indexTemp];
+        navText[indexTemp] = temp;
+        navigations[1].innerHTML = navText[1];
+        navigations[index].innerHTML = navText[index];
+    }
+}
+
+// SEARCH
+
+const searchField = document.getElementById("searchBookText");
+searchField.addEventListener("keyup", function(){
+    printListBook(2);
+});
