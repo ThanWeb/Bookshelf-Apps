@@ -9,7 +9,7 @@
     </head>
     <body>
         <header>
-            <h1>Bookshelf-Apps</h1>
+            <div class="title">Bookshelf-Apps</div>
             <nav>
                 <ul>
                     <li class="nav">Tambah Buku</li>
@@ -47,7 +47,7 @@
             <!-- FORM CARI BUKU -->
             <section class="search_section">
                 <h2>Cari Buku</h2>
-                <p>Ketikkan Judul Buku atau Nama Penulis</p>
+                <p>Ketikkan Judul Buku</p>
                 <div id="searchBook">
                     <label for="searchBookText"></label>
                     <input id="searchBookText" type="text">
@@ -57,14 +57,16 @@
             <section class="cabinet">
                 <!-- BELUM SELESAI DIBACA -->
                 <section class="book_shelf">
-                    <h2>Belum selesai dibaca</h2>
+                    <h2>Belum Selesai Dibaca</h2>
                     <div id="incompleteBookshelfList" class="book_list">
+                        <p class="no-result hidden">Tidak ada hasil</p>
                     </div>
                 </section>
                 <!-- SELESAI DIBACA -->
                 <section class="book_shelf">
-                    <h2>Selesai dibaca</h2>
+                    <h2>Sudah Selesai Dibaca</h2>
                     <div id="completeBookshelfList" class="book_list">
+                        <p class="no-result hidden">Tidak ada hasil</p>
                     </div>
                 </section>
             </section>

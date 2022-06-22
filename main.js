@@ -4,8 +4,14 @@ window.addEventListener("load", function(){
     printListBook(1);
 });
 
+window.addEventListener("scroll", function(){
+    setNavbar();
+});
+
 const localStorageKey = "BOOKS_DATA";
 const bookInputForm = document.getElementById("inputBook");
+const incompleteListBookDiv = document.getElementById("incompleteBookshelfList");
+const completeListBookDiv = document.getElementById("completeBookshelfList");
 
 bookInputForm.addEventListener("submit", function(){
     const inputTime = new Date().valueOf();
@@ -74,26 +80,36 @@ function insertBook(bookData){
 // PRINT
 
 function printListBook(x){
-    const incompleteListBookDiv = document.getElementById("incompleteBookshelfList");
-    const completeListBookDiv = document.getElementById("completeBookshelfList");
     const searchBookText = document.getElementById("searchBookText").value.toLowerCase();
     const eachBook = document.querySelectorAll(".each-book");
     for(let i = 0; i < eachBook.length; i++)
         eachBook[i].remove();
-    let printedDiv, printedButtonDiv, printedBookDiv, allBooks, name, author;
+    let printedDiv, printedButtonDiv, printedBookDiv, allBooks, name, temp;
     let row = [];
     let printedRow = [];
     let printedButton = [];
     let textButton = ["Edit", "Delete"];
+    let flag = [0, 0];
     if(checkForStorage()){
         if(localStorage.getItem(localStorageKey) !== null){
             allBooks = getBooks();
             for(let i = 0; i < allBooks.length; i++){
                 name = allBooks[i].name;
-                author = allBooks[i].author;
                 if(x == 2){
                     if(!(name.toLowerCase().indexOf(searchBookText) > -1))
                         continue;
+                    else{
+                        if(allBooks[i].isComplete == false){
+                            temp = flag[0];
+                            temp++;
+                            flag[0] = temp;
+                        }
+                        else{
+                            temp = flag[1];
+                            temp++;
+                            flag[1] = temp;
+                        }
+                    }
                 }
                 row[0] = `${allBooks[i].name}`;
                 row[1] = `Ditulis Oleh ${allBooks[i].author}`;
@@ -105,7 +121,7 @@ function printListBook(x){
                     printedRow[j] = document.createElement("p");
                     printedRow[j].innerHTML = row[j];
                     if(j == row.length - 1)
-                        printedRow[j].classList.add("id");
+                        printedRow[j].classList.add("hidden");
                     printedDiv.appendChild(printedRow[j]);
                     printedDiv.classList.add("identity");
                 }
@@ -131,6 +147,7 @@ function printListBook(x){
         }
     }
     initiationButtons();
+    return flag;
 }
 
 // GET BOOKS
@@ -196,13 +213,14 @@ function deleteBook(id){
     }
 }
 
-// CHANGE POSITION
+// NAVIGATION
 
 let temp, indexTemp;
-const navigations = document.querySelectorAll(".nav");
+let navigations = document.querySelectorAll(".nav");
 for(let i = 0; i < navigations.length; i++){
     navigations[i].addEventListener("click", function(){
         changePosition(navigations[i].innerHTML, i);
+        setTimeout(deleteAnimation, 500);
     });
 }
 
@@ -220,14 +238,39 @@ function changePosition(text, index){
         temp = navText[1];
         navText[1] = navText[indexTemp];
         navText[indexTemp] = temp;
+        navigations[1].classList.add("animation");
+        navigations[index].classList.add("animation");
         navigations[1].innerHTML = navText[1];
         navigations[index].innerHTML = navText[index];
     }
 }
 
+function deleteAnimation(){
+    navigations.forEach(nav => {
+        nav.classList.remove("animation");
+    });
+}
+
+let title = document.querySelector(".title");
+let navbar = document.querySelector("nav");
+let height = navbar.offsetTop;
+function setNavbar(){
+    if(window.pageYOffset > height)
+        navbar.classList.add("sticky-nav")
+    else
+        navbar.classList.remove("sticky-nav");
+}
+
 // SEARCH
 
 const searchField = document.getElementById("searchBookText");
+const noResult = document.querySelectorAll(".no-result");
 searchField.addEventListener("keyup", function(){
-    printListBook(2);
+    let find = printListBook(2);
+    for(let i = 0; i < find.length; i++){
+        if(find[i] == 0)
+            noResult[i].classList.remove("hidden");
+        else
+            noResult[i].classList.add("hidden");
+    }
 });
