@@ -14,10 +14,10 @@
 }
 
 html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0 auto;
     text-align: center;
 }
 
@@ -25,7 +25,9 @@ body, button, input {
     font-family: 'Poppins', sans-serif;
 }
 
-button, input {
+main {
+    margin: 0 auto;
+    width: 80%;
 }
 
 .hidden {
@@ -68,11 +70,14 @@ nav ul {
 nav li {   
     background-color: var(--blue); 
     flex-basis: 30%;
-    text-decoration: none;
     padding: 0.3em 1em;
     cursor: pointer;
     user-select: none;
     color: var(--white);
+}
+
+nav li:hover {
+    color: burlywood;
 }
 
 nav li:nth-child(1) {
@@ -114,10 +119,6 @@ nav li:nth-child(3) {
 
 /* INPUT FORM */
 
-#inputBook {       
-    
-}
-
 .input {
     display: flex;
     justify-content: center;
@@ -145,22 +146,25 @@ nav li:nth-child(3) {
 
 /* LEMARI BUKU */
 
-.cabinet {
-
-}
-
 .book_list {
     display: flex;
-    justify-content: left;
+    justify-content: space-evenly;
    
-    flex-wrap: wrap;
-    font-size: 0.8em; 
+    flex-wrap: wrap; 
 }
 
 .each-book {
     margin: 1em 0;
-    width: 20%;
-    box-shadow: inset 5px rgba(0, 0, 0, 0.75);
+    width: 30%;
+    border: 1px solid black;
+}
+
+.each-book .identity {
+    margin: 2px 0;
+}
+
+.each-book .identity p {
+    text-decoration: underline;
 }
 
 /* MODAL FORM */

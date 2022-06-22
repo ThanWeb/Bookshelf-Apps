@@ -1,7 +1,7 @@
 // INITIATION
 
 window.addEventListener("load", function(){
-    printListBook(1);
+    searchBook();
 });
 
 window.addEventListener("scroll", function(){
@@ -121,7 +121,7 @@ function printListBook(x){
                     printedRow[j] = document.createElement("p");
                     printedRow[j].innerHTML = row[j];
                     if(j == row.length - 1)
-                        printedRow[j].classList.add("hidden");
+                        printedRow[j].classList.add("hidden", "id");
                     printedDiv.appendChild(printedRow[j]);
                     printedDiv.classList.add("identity");
                 }
@@ -240,8 +240,11 @@ function changePosition(text, index){
         navText[indexTemp] = temp;
         navigations[1].classList.add("animation");
         navigations[index].classList.add("animation");
+        navigations[1].href = "#" + `${navText[1]}` + "_div";
+        navigations[index].href = "#" + `${navText[index]}` + "_div";
         navigations[1].innerHTML = navText[1];
         navigations[index].innerHTML = navText[index];
+        autoScroll(navigations[1].innerHTML);
     }
 }
 
@@ -251,11 +254,29 @@ function deleteAnimation(){
     });
 }
 
+// AUTO SCROLL
+
+let inputPosition = document.getElementById("input_div").offsetTop;
+let searchPosition = document.getElementById("search_div").offsetTop;
+let cabinetPosition = document.getElementById("cabinet_div").offsetTop;
+function autoScroll(text){
+    if(text == 'Tambah Buku')
+        window.scrollTo(0, inputPosition - height);
+    else if(text == 'Cari Buku')
+        window.scrollTo(0, searchPosition - height);
+    else if(text == 'Rak Buku')
+        window.scrollTo(0, cabinetPosition - height);
+    console.log(inputPosition, searchPosition, cabinetPosition, text);
+
+}
+
+// SCROLL NAVIGATION
+
 let title = document.querySelector(".title");
 let navbar = document.querySelector("nav");
 let height = navbar.offsetTop;
 function setNavbar(){
-    if(window.pageYOffset > height)
+    if(window.scrollY > height)
         navbar.classList.add("sticky-nav")
     else
         navbar.classList.remove("sticky-nav");
@@ -266,6 +287,10 @@ function setNavbar(){
 const searchField = document.getElementById("searchBookText");
 const noResult = document.querySelectorAll(".no-result");
 searchField.addEventListener("keyup", function(){
+    searchBook();
+});
+
+function searchBook(){
     let find = printListBook(2);
     for(let i = 0; i < find.length; i++){
         if(find[i] == 0)
@@ -273,4 +298,4 @@ searchField.addEventListener("keyup", function(){
         else
             noResult[i].classList.add("hidden");
     }
-});
+}
