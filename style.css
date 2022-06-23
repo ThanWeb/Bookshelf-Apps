@@ -113,7 +113,7 @@ nav ul {
 nav li {   
     background-color: var(--green); 
     flex-basis: 30%;
-    padding: 0.3em 1em;
+    padding: .25em .25em;
     cursor: pointer;
     user-select: none;
     color: var(--black);
@@ -213,7 +213,6 @@ nav li {
 .book_list {
     display: flex;
     justify-content: space-evenly;
-   
     flex-wrap: wrap; 
 }
 
@@ -274,7 +273,20 @@ footer {
 /* MEDIA QUERY */
 /* font dikecilin */
 @media (min-width: 280px) and (max-width: 600px) {
-    body {
-        font-size: 12px;
+    body, button, input {
+        font-size: 10px;
+    }
+
+    .book_list {
+        width: 100%;
+    }
+
+    .each-book {
+        margin: .5em;
+        width: 100%;
+    }
+
+    .input_section, .search_section, .cabinet{
+        padding: 1em;
     }
 }
