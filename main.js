@@ -85,7 +85,7 @@ function printListBook(x){
     const eachBook = document.querySelectorAll(".each-book");
     for(let i = 0; i < eachBook.length; i++)
         eachBook[i].remove();
-    let printedDiv, printedButtonDiv, printedBookDiv, allBooks, name, temp;
+    let printedDiv, printedButtonDiv, printedBookDiv, allBooks, title, temp;
     let row = [];
     let printedRow = [];
     let printedButton = [];
@@ -95,9 +95,9 @@ function printListBook(x){
         if(localStorage.getItem(localStorageKey) !== null){
             allBooks = getBooks();
             for(let i = 0; i < allBooks.length; i++){
-                name = allBooks[i].name;
+                title = allBooks[i].title;
                 if(x == 2){
-                    if(!(name.toLowerCase().indexOf(searchBookText) > -1))
+                    if(!(title.toLowerCase().indexOf(searchBookText) > -1))
                         continue;
                     else{
                         if(allBooks[i].isComplete == false){
@@ -112,7 +112,7 @@ function printListBook(x){
                         }
                     }
                 }
-                row[0] = `${allBooks[i].name}`;
+                row[0] = `${allBooks[i].title}`;
                 row[1] = `Ditulis Oleh ${allBooks[i].author}`;
                 row[2] = `Terbit Pada Tahun ${allBooks[i].year}`;
                 row[3] = allBooks[i].id;
@@ -174,7 +174,7 @@ function editBook(id){
         if(id == data[i].id)
             index = i;
     }
-    editTitle.value = data[index].name;
+    editTitle.value = data[index].title;
     editAuthor.value = data[index].author;
     editYear.value = (data[index].year);
     if(data[index].isComplete == true)
@@ -183,7 +183,7 @@ function editBook(id){
     editComplete.checked = false;
     editForm.style.display = "flex";
     editForm.addEventListener("submit", function(){
-        data[index].name = editTitle.value;
+        data[index].title = editTitle.value;
         data[index].author = editAuthor.value;
         data[index].year = parseInt(editYear.value);
         if(editComplete.checked)
