@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Neucha&family=Patrick+Hand&family=Tillana&display=swap');
 
 :root {
-    --orange: #FF5F00;
-    --red: #B40600;
-    --navy: #00092C;
+    --orange: #DE8959;
+    --yellow: #CFDE64;
+    --red: #ff0600;
     --white: #FFF;
-    --green: #18978F;
-    --purple: #827397;
+    --green: #54BAB9;
+    --purple: #913A5C;
     --gray: #4B5D67;
-    --skyblue: #54BAB9;
+    --skyblue: #6FDEDC;
+    --blue: #55ABA9;
     --black: #000;
+    --lightskyblue: #B6E3E3;
+    --navy: #417291;
+    --darkred: #913A3A;
+    --grey: #D2D6F7;
 }
 
 * {
@@ -24,24 +29,33 @@ html {
 
 body {
     text-align: center;
+    background-color: var(--white);
 }
 
 body, button, input {
     font-family: 'Patrick Hand', cursive;
     font-size: 20px;
-    background-color: var(--white);
     color: var(--black);
     letter-spacing: 1px;
 }
 
-button, input {
+button, input, .exit-modal {
+    background-color: var(--white);
+    border: 1px solid white;
     border-radius: 5px;
     padding: 2px 5px;
 }
 
-button {
+input {
+    border: 1px solid var(--blue);
+}
+
+button, .exit-modal {
     cursor: pointer;
     user-select: none;
+    border: 1px solid var(--navy);
+    background-color: var(--navy);
+    color: var(--white);
 }
 
 main {
@@ -50,7 +64,8 @@ main {
 }
 
 h2 {
-    text-decoration: underline;
+    color: var(--white);
+    letter-spacing: 5px;
 }
 
 .hidden {
@@ -58,7 +73,8 @@ h2 {
 }
 
 .input_section, .search_section, .cabinet{
-    box-shadow: inset 2px 2px 0 0 rgba(0, 0, 0, 0.75),  inset 0 0 2px 2px rgba(0, 0, 0, 0.75);
+    background-color: var(--blue);
+    box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.15);
     padding: 1em 0;
     margin: 2em 0;
 }
@@ -101,6 +117,7 @@ nav li {
     cursor: pointer;
     user-select: none;
     color: var(--black);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.5), 0 -2px 2px rgba(0, 0, 0, 0.5);
 }
 
 nav li:hover {
@@ -115,11 +132,23 @@ nav li {
     position: fixed;
     top: 0;
     width: 100%;
+    background-color: var(--skyblue);
 }
 
 .sticky-nav li {
+    position: fixed;
+    top: 0;
     border-radius: 0 0 20px 20px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5)
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    width: 30%;
+}
+
+.sticky-nav li:nth-child(1) {
+    left: 2.5%;
+}
+
+.sticky-nav li:nth-child(3) {
+    right: 2.5%;
 }
 
 .animation {
@@ -176,7 +205,7 @@ nav li {
 }
 
 .no-result {
-    margin: 0 auto;
+    margin: 1em auto;
 }
 
 /* LEMARI BUKU */
@@ -195,7 +224,8 @@ nav li {
     margin: 1em 0;
     vertical-align: middle;
     width: 30%;
-    border: 1px solid black;
+    padding: 5px;
+    background-color: var(--white);
 }
 
 .each-book .identity {
@@ -211,6 +241,7 @@ nav li {
 }
 
 /* MODAL FORM */
+
 .modal-form {
     display: none;
     position: fixed;
@@ -223,7 +254,7 @@ nav li {
 }
 
 .modal-form form {
-    background-color: var(--gray);
+    background-color: var(--blue);
     margin: auto;
     width: 80%;
     border-radius: 30px;
@@ -234,7 +265,8 @@ nav li {
     justify-content: center;
 }
 
-.exit-modal {
-    cursor: pointer;
-    color: var(--orange);
+/* FOOTER */
+
+footer {
+    margin: 1em;
 }

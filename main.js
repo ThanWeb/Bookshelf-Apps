@@ -274,12 +274,17 @@ function autoScroll(text){
 
 let title = document.querySelector(".title");
 let navbar = document.querySelector("nav");
+let listheight = document.querySelector(".active").offsetHeight;
 let height = navbar.offsetTop;
 function setNavbar(){
-    if(window.scrollY > height)
-        navbar.classList.add("sticky-nav")
-    else
+    if(window.scrollY > height){
+        navbar.classList.add("sticky-nav");
+        navbar.style.height = `${listheight + 10}px`;
+    }
+    else{
         navbar.classList.remove("sticky-nav");
+        navbar.style.height = `inherit`;
+    }
 }
 
 // SEARCH

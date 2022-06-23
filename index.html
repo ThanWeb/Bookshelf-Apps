@@ -25,15 +25,15 @@
                 <form id="inputBook">
                     <div class="input">
                         <label for="inputBookTitle">Judul</label>
-                        <input id="inputBookTitle" class="text-input" type="text" required>
+                        <input id="inputBookTitle" class="text-input" type="text" required placeholder="Ketik judul disini">
                     </div>
                     <div class="input">
                         <label for="inputBookAuthor">Penulis</label>
-                        <input id="inputBookAuthor" class="text-input" type="text" required>
+                        <input id="inputBookAuthor" class="text-input" type="text" required placeholder="Nama sang penulis">
                     </div>
                     <div class="input">
                         <label for="inputBookYear">Tahun</label>
-                        <input id="inputBookYear" class="text-input" type="number" required>
+                        <input id="inputBookYear" class="text-input" type="number" required placeholder="Kapan buku ini terbit">
                     </div>
                     <div class="input">
                         <label for="inputBookIsComplete">Selesai dibaca</label>
@@ -46,28 +46,30 @@
                 </form>
             </section>
             <!-- FORM CARI BUKU -->
+            <q>Buku adalah jendela dunia</q>
             <section class="search_section" id="search_div">
                 <h2>Cari Buku</h2>
                 <p>Ketikkan Judul Buku</p>
                 <div id="searchBook">
                     <label for="searchBookText"></label>
-                    <input id="searchBookText" type="text">
+                    <input id="searchBookText" type="text" placeholder="Ketik judul disini">
                 </div>
             </section>
             <!-- LEMARI BUKU -->
+            <q>Makin banyak aku membaca, makin banyak aku memperoleh informasi</q>
             <section class="cabinet" id="cabinet_div">
                 <!-- BELUM SELESAI DIBACA -->
                 <section class="book_shelf">
                     <h2>Belum Selesai Dibaca</h2>
                     <div id="incompleteBookshelfList" class="book_list">
-                        <p class="no-result hidden">Tidak ada hasil</p>
+                        <p class="no-result hidden">Tidak ada buku pada rak ini</p>
                     </div>
                 </section>
                 <!-- SELESAI DIBACA -->
                 <section class="book_shelf">
                     <h2>Sudah Selesai Dibaca</h2>
                     <div id="completeBookshelfList" class="book_list">
-                        <p class="no-result hidden">Tidak ada hasil</p>
+                        <p class="no-result hidden">Tidak ada buku pada rak ini</p>
                     </div>
                 </section>
             </section>
@@ -76,15 +78,15 @@
                 <form action="">
                     <div class="input">
                         <label for="editBookTitle">Judul</label>
-                        <input id="editBookTitle" class="text-input" type="text" required>
+                        <input id="editBookTitle" class="text-input" type="text" required placeholder="Ketik judul disini">
                     </div>
                     <div class="input">
                         <label for="editBookAuthor">Penulis</label>
-                        <input id="editBookAuthor" class="text-input" type="text" required>
+                        <input id="editBookAuthor" class="text-input" type="text" required placeholder="Nama sang penulis">
                     </div>
                     <div class="input">
                         <label for="editBookYear">Tahun</label>
-                        <input id="editBookYear" class="text-input" type="number" required>
+                        <input id="editBookYear" class="text-input" type="number" required placeholder="Kapan buku ini terbit">
                     </div>
                     <div class="input">
                         <label for="editBookIsComplete">Selesai dibaca</label>
@@ -101,7 +103,7 @@
             </section>
         </main>
         <footer>
-            <p>Made By Hans Rio</p>
+            <p> ----------------------------- | Made By Hans Rio | ----------------------------- </p>
         </footer>
     <script src="main.js"></script>
     </body>
