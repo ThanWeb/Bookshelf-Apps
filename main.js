@@ -14,11 +14,12 @@ const incompleteListBookDiv = document.getElementById("incompleteBookshelfList")
 const completeListBookDiv = document.getElementById("completeBookshelfList");
 
 bookInputForm.addEventListener("submit", function(){
-    const inputTime = new Date().valueOf();
-    const bookName = document.getElementById("inputBookTitle").value;
-    const bookAuthor = document.getElementById("inputBookAuthor").value;
-    const bookYear = document.getElementById("inputBookYear").value;
-    const bookStatus = document.getElementById("inputBookIsComplete");
+    let inputTime = new Date().valueOf();
+    let bookTitle = document.getElementById("inputBookTitle").value;
+    let bookAuthor = document.getElementById("inputBookAuthor").value;
+    let bookYear = document.getElementById("inputBookYear").value;
+    bookYear = parseInt(bookYear);
+    let bookStatus = document.getElementById("inputBookIsComplete");
     let flag;
     if(bookStatus.checked)
         flag = true;
@@ -26,7 +27,7 @@ bookInputForm.addEventListener("submit", function(){
         flag = false;
     const newBookData = {
         id : inputTime,
-        name: bookName,
+        title: bookTitle,
         author: bookAuthor,
         year: bookYear,
         isComplete: flag
@@ -175,16 +176,16 @@ function editBook(id){
     }
     editTitle.value = data[index].name;
     editAuthor.value = data[index].author;
-    editYear.value = data[index].year;
+    editYear.value = (data[index].year);
     if(data[index].isComplete == true)
         editComplete.checked = true;
     else
-        editComplete.checked = false;
+    editComplete.checked = false;
     editForm.style.display = "flex";
     editForm.addEventListener("submit", function(){
         data[index].name = editTitle.value;
         data[index].author = editAuthor.value;
-        data[index].year = editYear.value;
+        data[index].year = parseInt(editYear.value);
         if(editComplete.checked)
             data[index].isComplete = true;
         else

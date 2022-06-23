@@ -270,3 +270,11 @@ nav li {
 footer {
     margin: 1em;
 }
+
+/* MEDIA QUERY */
+/* font dikecilin */
+@media (min-width: 280px) and (max-width: 600px) {
+    body {
+        font-size: 12px;
+    }
+}
