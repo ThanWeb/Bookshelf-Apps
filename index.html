@@ -39,6 +39,7 @@
                         <label for="inputBookIsComplete">Selesai dibaca</label>
                         <div>
                             <input id="inputBookIsComplete" type="checkbox">
+                            Centang jika sudah selesai
                         </div>
                     </div>
                     <button id="bookSubmit" type="submit">Masukkan Buku</span></button>
@@ -73,24 +74,29 @@
             <!-- FORM EDIT BUKU -->
             <section class="modal-form">
                 <form action="">
-                    <div class="edit-field">
+                    <div class="input">
                         <label for="editBookTitle">Judul</label>
-                        <input id="editBookTitle" type="text" required>
+                        <input id="editBookTitle" class="text-input" type="text" required>
                     </div>
-                    <div class="edit-field">
+                    <div class="input">
                         <label for="editBookAuthor">Penulis</label>
-                        <input id="editBookAuthor" type="text" required>
+                        <input id="editBookAuthor" class="text-input" type="text" required>
                     </div>
-                    <div class="edit-field">
+                    <div class="input">
                         <label for="editBookYear">Tahun</label>
-                        <input id="editBookYear" type="number" required>
+                        <input id="editBookYear" class="text-input" type="number" required>
                     </div>
-                    <div class="edit-field">
+                    <div class="input">
                         <label for="editBookIsComplete">Selesai dibaca</label>
-                        <input id="editBookIsComplete" type="checkbox">
+                        <div>
+                            <input id="editBookIsComplete" type="checkbox">
+                            Centang jika sudah selesai
+                        </div>
+                    </div> 
+                    <div class="buttons">
+                        <button id="bookEditSubmit" type="submit">Edit Buku</span></button>
+                        <div class="exit-modal" onclick="exitForm()">Cancel</div>
                     </div>
-                    <button id="bookEditSubmit" type="submit">Edit Buku</span></button>
-                    <span class="exit-modal" onclick="exitForm()">X</span>
                 </form>
             </section>
         </main>

@@ -1,10 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neucha&family=Patrick+Hand&family=Tillana&display=swap');
 
 :root {
-    --black: #383838;
-    --blue: #066163;
-    --yellow: #CDBE78;
-    --white: #F2F2F2;
+    --orange: #FF5F00;
+    --red: #B40600;
+    --navy: #00092C;
+    --white: #FFF;
+    --green: #18978F;
+    --purple: #827397;
+    --gray: #4B5D67;
+    --skyblue: #54BAB9;
+    --black: #000;
 }
 
 * {
@@ -22,12 +27,30 @@ body {
 }
 
 body, button, input {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+    background-color: var(--white);
+    color: var(--black);
+    letter-spacing: 1px;
+}
+
+button, input {
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+button {
+    cursor: pointer;
+    user-select: none;
 }
 
 main {
     margin: 0 auto;
     width: 80%;
+}
+
+h2 {
+    text-decoration: underline;
 }
 
 .hidden {
@@ -42,6 +65,10 @@ main {
 
 /* HEADER */
 
+header {
+    background-color: var(--skyblue);
+}
+
 header .title {
     padding: 0.25em;
     font-size: 3em;
@@ -54,7 +81,7 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: var(--black);
+    font-size: 1.3em;
 }
 
 nav ul {
@@ -68,31 +95,31 @@ nav ul {
 }
 
 nav li {   
-    background-color: var(--blue); 
+    background-color: var(--green); 
     flex-basis: 30%;
     padding: 0.3em 1em;
     cursor: pointer;
     user-select: none;
-    color: var(--white);
+    color: var(--black);
 }
 
 nav li:hover {
-    color: burlywood;
+    color: var(--skyblue);
 }
 
-nav li:nth-child(1) {
-    border-radius: 20px 0 0 20px;
+nav li {
+    border-radius: 20px 20px 0 0;
 }
-
-nav li:nth-child(3) {
-    border-radius: 0 20px 20px 0;
-}
-
 
 .sticky-nav {
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+.sticky-nav li {
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5)
 }
 
 .animation {
@@ -113,11 +140,10 @@ nav li:nth-child(3) {
 }
 
 .active {
-    background-color: var(--black);
-    font-size: 1.2em;
+    text-decoration: underline;
 }
 
-/* INPUT FORM */
+/* INPUT FORM AND EDIT FORM*/
 
 .input {
     display: flex;
@@ -125,13 +151,22 @@ nav li:nth-child(3) {
     margin: .5em 0;
 }
 
-.input label, .input .text-input, .input div {
+.input label {
     text-align: left;
-    flex-basis: 20%;
+    width: 20%;
+    font-size: 1.2em;
 }
 
-.input input {
-    padding-left: 3px;
+.input .text-input {
+    width: 70%;
+}
+
+.input div {
+    width: 70%;
+}
+
+.edit-field div input {
+    text-align: center;
 }
 
 /* FORM CARI BUKU */
@@ -154,7 +189,11 @@ nav li:nth-child(3) {
 }
 
 .each-book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 1em 0;
+    vertical-align: middle;
     width: 30%;
     border: 1px solid black;
 }
@@ -163,8 +202,12 @@ nav li:nth-child(3) {
     margin: 2px 0;
 }
 
-.each-book .identity p {
-    text-decoration: underline;
+.buttons {
+    margin: 0.5em;
+}
+
+.buttons button {
+    margin: 0 0.5em;
 }
 
 /* MODAL FORM */
@@ -176,13 +219,22 @@ nav li:nth-child(3) {
     top: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.90);
 }
 
 .modal-form form {
+    background-color: var(--gray);
     margin: auto;
-    border: 1px solid black;
+    width: 80%;
+    border-radius: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
 }
 
 .exit-modal {
-    position: relative;
+    cursor: pointer;
+    color: var(--orange);
 }
