@@ -287,7 +287,6 @@ let listheight = document.querySelector(".active").offsetHeight;
 let width = screen.width;
 function setNavbar(){
     if(window.scrollY > height){
-        console.log(width);
         navbar.classList.add("sticky-nav");
         if(width <= 320)
             navbar.style.height = `${listheight + -10}px`;

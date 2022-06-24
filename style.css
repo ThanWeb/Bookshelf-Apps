@@ -275,24 +275,6 @@ footer {
 }
 
 /* MEDIA QUERY */
-/* @media (min-width: 280px) and (max-width: 600px) {
-    body, button, input {
-        font-size: 10px;
-    }
-
-    .book_list {
-        width: 100%;
-    }
-
-    .each-book {
-        margin: .5em;
-        width: 100%;
-    }
-
-    .input_section, .search_section, .cabinet{
-        padding: 1em;
-    }
-} */
 
 @media only screen and (max-width: 600px) {
     body, button, input {
