@@ -11,7 +11,6 @@ window.addEventListener("load", function(){
 });
 
 window.addEventListener("scroll", function(){
-    checkScrollPosition();
     setNavbar();
 });
 
