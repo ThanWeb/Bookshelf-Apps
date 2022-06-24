@@ -11,6 +11,7 @@ window.addEventListener("load", function(){
 });
 
 window.addEventListener("scroll", function(){
+    checkScrollPosition();
     setNavbar();
 });
 
@@ -219,40 +220,45 @@ let temp, indexTemp;
 let navigations = document.querySelectorAll(".nav");
 for(let i = 0; i < navigations.length; i++){
     navigations[i].addEventListener("click", function(){
-        changePosition(navigations[i].innerHTML, i);
+        changePosition(navigations[i].innerHTML, i, 1);
         setTimeout(deleteAnimation, 500);
     });
 }
 
-function changePosition(text, index){
+function changePosition(text, index, flag){
     let navText = [];
-    if(index != 1){
-        for(let i = 0; i < navigations.length; i++)
-            navText.push(navigations[i].innerHTML);
+    for(let i = 0; i < navigations.length; i++)
+        navText.push(navigations[i].innerHTML);
 
-        for(let i = 0; i < navigations.length; i++){
-            if(navText[i] == text)
-                indexTemp = i;
-        }
-
-        temp = navText[1];
-        navText[1] = navText[indexTemp];
-        navText[indexTemp] = temp;
-        navigations[1].classList.add("animation");
-        navigations[index].classList.add("animation");
-        navigations[1].href = "#" + `${navText[1]}` + "_div";
-        navigations[index].href = "#" + `${navText[index]}` + "_div";
-        navigations[1].innerHTML = navText[1];
-        navigations[index].innerHTML = navText[index];
-        
+    for(let i = 0; i < navigations.length; i++){
+        if(navText[i] == text)
+            indexTemp = i;
     }
-    autoScroll(navigations[1].innerHTML);
+
+    temp = navText[1];
+    navText[1] = navText[indexTemp];
+    navText[indexTemp] = temp;
+    navigations[1].classList.add("animation");
+    navigations[index].classList.add("animation");
+    navigations[1].href = "#" + `${navText[1]}` + "_div";
+    navigations[index].href = "#" + `${navText[index]}` + "_div";
+    navigations[1].innerHTML = navText[1];
+    navigations[index].innerHTML = navText[index];
+
+    if(flag == 1)
+        autoScroll(navigations[1].innerHTML);
 }
 
 function deleteAnimation(){
     navigations.forEach(nav => {
         nav.classList.remove("animation");
     });
+}
+
+// CHECK SCROLL POSITION
+
+function checkScrollPosition(){
+    
 }
 
 // AUTO SCROLL
@@ -278,10 +284,15 @@ function autoScroll(text){
 
 let title = document.querySelector(".title");
 let listheight = document.querySelector(".active").offsetHeight;
+let width = screen.width;
 function setNavbar(){
     if(window.scrollY > height){
+        console.log(width);
         navbar.classList.add("sticky-nav");
-        navbar.style.height = `${listheight + 10}px`;
+        if(width <= 320)
+            navbar.style.height = `${listheight + -10}px`;
+        else
+            navbar.style.height = `${listheight + 10}px`;
     }
     else{
         navbar.classList.remove("sticky-nav");
