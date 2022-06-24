@@ -198,6 +198,10 @@ nav li {
     text-align: center;
 }
 
+.checkbox {
+    cursor: pointer;
+}
+
 /* FORM CARI BUKU */
 
 .search_section p, .search_section form{

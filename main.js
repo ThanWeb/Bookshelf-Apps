@@ -1,5 +1,11 @@
 // INITIATION
 
+const localStorageKey = "BOOKS_DATA";
+const bookInputForm = document.getElementById("inputBook");
+const incompleteListBookDiv = document.getElementById("incompleteBookshelfList");
+const completeListBookDiv = document.getElementById("completeBookshelfList");
+const editForm = document.querySelector(".modal-form");
+
 window.addEventListener("load", function(){
     searchBook();
 });
@@ -7,11 +13,6 @@ window.addEventListener("load", function(){
 window.addEventListener("scroll", function(){
     setNavbar();
 });
-
-const localStorageKey = "BOOKS_DATA";
-const bookInputForm = document.getElementById("inputBook");
-const incompleteListBookDiv = document.getElementById("incompleteBookshelfList");
-const completeListBookDiv = document.getElementById("completeBookshelfList");
 
 bookInputForm.addEventListener("submit", function(){
     let inputTime = new Date().valueOf();
@@ -165,7 +166,6 @@ function getBooks(){
 function editBook(id){
     let data = getBooks();
     let index;
-    const editForm = document.querySelector(".modal-form");
     const editTitle = document.getElementById("editBookTitle");
     const editAuthor = document.getElementById("editBookAuthor");
     const editYear = document.getElementById("editBookYear");
@@ -195,7 +195,6 @@ function editBook(id){
 }
 
 function exitForm(){
-    const editForm = document.querySelector(".modal-form");
     editForm.style.display = "none";
 }
 
@@ -260,23 +259,24 @@ function deleteAnimation(){
 let inputPosition = document.getElementById("input_div").offsetTop;
 let searchPosition = document.getElementById("search_div").offsetTop;
 let cabinetPosition = document.getElementById("cabinet_div").offsetTop;
+let navbar = document.querySelector("nav");
+let height = navbar.offsetTop;
+let gotoInput = inputPosition - height;
+let gotoSearch = searchPosition - height - 30;
+let gotoCabinet = cabinetPosition - height;
 function autoScroll(text){
     if(text == 'Tambah Buku')
-        window.scrollTo(0, inputPosition - height);
+        window.scrollTo(0, gotoInput);
     else if(text == 'Cari Buku')
-        window.scrollTo(0, searchPosition - height);
+        window.scrollTo(0, gotoSearch);
     else if(text == 'Rak Buku')
-        window.scrollTo(0, cabinetPosition - height);
-    console.log(inputPosition, searchPosition, cabinetPosition, text);
-
+        window.scrollTo(0, gotoCabinet);
 }
 
 // SCROLL NAVIGATION
 
 let title = document.querySelector(".title");
-let navbar = document.querySelector("nav");
 let listheight = document.querySelector(".active").offsetHeight;
-let height = navbar.offsetTop;
 function setNavbar(){
     if(window.scrollY > height){
         navbar.classList.add("sticky-nav");
@@ -287,7 +287,6 @@ function setNavbar(){
         navbar.style.height = `inherit`;
     }
 }
-
 // SEARCH
 
 const searchField = document.getElementById("searchBookText");
