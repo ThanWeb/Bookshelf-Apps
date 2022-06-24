@@ -255,12 +255,6 @@ function deleteAnimation(){
     });
 }
 
-// CHECK SCROLL POSITION
-
-function checkScrollPosition(){
-    
-}
-
 // AUTO SCROLL
 
 let inputPosition = document.getElementById("input_div").offsetTop;
