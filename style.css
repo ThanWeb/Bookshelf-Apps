@@ -1,20 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Neucha&family=Patrick+Hand&family=Tillana&display=swap');
 
 :root {
-    --orange: #DE8959;
-    --yellow: #CFDE64;
     --red: #ff0600;
     --white: #FFF;
     --green: #54BAB9;
-    --purple: #913A5C;
-    --gray: #4B5D67;
     --skyblue: #6FDEDC;
     --blue: #55ABA9;
     --black: #000;
-    --lightskyblue: #B6E3E3;
     --navy: #417291;
-    --darkred: #913A3A;
-    --grey: #D2D6F7;
 }
 
 * {
