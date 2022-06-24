@@ -244,8 +244,9 @@ function changePosition(text, index){
         navigations[index].href = "#" + `${navText[index]}` + "_div";
         navigations[1].innerHTML = navText[1];
         navigations[index].innerHTML = navText[index];
-        autoScroll(navigations[1].innerHTML);
+        
     }
+    autoScroll(navigations[1].innerHTML);
 }
 
 function deleteAnimation(){
